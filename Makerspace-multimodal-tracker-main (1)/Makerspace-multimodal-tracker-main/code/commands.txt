@@ -1,0 +1,52 @@
+# webcam
+python3 multi_webcam.py --station=0 --webcams='[0,2]' --recording_time='09:00' --recording_duration=43200 
+
+python3 multi_webcam.py --station=1 --webcams='[0,2,4]' --recording_time='09:00' --recording_duration=43200
+
+python3 multi_webcam.py --station=2 --webcams='[0,5]' --recording_time='09:00' --recording_duration=43200
+
+# hdd copy
+python3 hdd_copy.py --station=0 --webcams='[0,2]'  --hdd_dir='/media/litlab/Litlab/Makerspace'
+
+python3 hdd_copy.py --station=1 --webcams='[0,2,4]' --hdd_dir='/media/litlab/Elements/Makerspace'
+
+python3 hdd_copy.py --station=2 --webcams='[0,5]' --hdd_dir='/media/litlab/Elements/Makerspace'
+
+# nextcloud copy
+python3 nextcloud_copy.py --station=0 --webcams='[0,2]'  --nextcloud_dir='/run/user/1000/gvfs/dav:host=ncdrive.gse.harvard.edu,ssl=true,prefix=%2Fremote.php%2Fwebdav/Litlab/Makerspace'
+
+python3 nextcloud_copy.py --station=1 --webcams='[0,2,4]' --nextcloud_dir='/run/user/1000/gvfs/dav:host=ncdrive.gse.harvard.edu,ssl=true,prefix=%2Fremote.php%2Fwebdav/Litlab/Makerspace'
+
+python3 nextcloud_copy.py --station=2 --webcams='[0,5]' --nextcloud_dir='/run/user/1000/gvfs/dav:host=ncdrive.gse.harvard.edu,ssl=true,prefix=%2Fremote.php%2Fwebdav/Litlab/Makerspace'
+
+# hdd nextcloud sync
+python3 hdd_nextcloud_sync.py --station=0 --webcams='[0,2]'  --hdd_dir='/media/litlab/Litlab/Makerspace' --nextcloud_dir='/run/user/1000/gvfs/dav:host=ncdrive.gse.harvard.edu,ssl=true,prefix=%2Fremote.php%2Fwebdav/Litlab/Makerspace'
+
+python3 hdd_nextcloud_sync.py --station=1 --webcams='[0,2,4]' --hdd_dir='/media/litlab/Elements/Makerspace' --nextcloud_dir='/run/user/1000/gvfs/dav:host=ncdrive.gse.harvard.edu,ssl=true,prefix=%2Fremote.php%2Fwebdav/Litlab/Makerspace'
+
+python3 hdd_nextcloud_sync.py --station=2 --webcams='[0,5]' --hdd_dir='/media/litlab/Elements/Makerspace' --nextcloud_dir='/run/user/1000/gvfs/dav:host=ncdrive.gse.harvard.edu,ssl=true,prefix=%2Fremote.php%2Fwebdav/Litlab/Makerspace'
+
+# email
+python3 email_server.py --station=0 --webcams='[0,2]'  --nextcloud_dir='/run/user/1000/gvfs/dav:host=ncdrive.gse.harvard.edu,ssl=true,prefix=%2Fremote.php%2Fwebdav/Litlab/Makerspace'
+
+python3 email_server.py --station=1 --webcams='[0,2,4]' --nextcloud_dir='/run/user/1000/gvfs/dav:host=ncdrive.gse.harvard.edu,ssl=true,prefix=%2Fremote.php%2Fwebdav/Litlab/Makerspace'
+
+python3 email_server.py --station=2 --webcams='[0,5]' --nextcloud_dir='/run/user/1000/gvfs/dav:host=ncdrive.gse.harvard.edu,ssl=true,prefix=%2Fremote.php%2Fwebdav/Litlab/Makerspace'
+
+# webcam post
+#python3 multi_webcam_post.py --station=0 --webcams='[0,2]' 
+
+#python3 multi_webcam_post.py --station=1 --webcams='[0,2,4]' 
+
+#python3 multi_webcam_post.py --station=2 --webcams='[0,5]'
+
+# calibrate
+ffmpeg -f video4linux2 -input_format mjpeg -s 1920x1080 -t 10 -framerate 30 -i /dev/video0 ~/MakerspaceTracking/videos/calibrate_1080p/0_0.mp4
+ffmpeg -f video4linux2 -input_format mjpeg -s 1920x1080 -t 10 -framerate 30 -i /dev/video2 ~/MakerspaceTracking/videos/calibrate_1080p/0_2.mp4
+ffmpeg -f video4linux2 -input_format mjpeg -s 1920x1080 -t 10 -framerate 30 -i /dev/video0 ~/MakerspaceTracking/videos/calibrate_1080p/1_0.mp4
+ffmpeg -f video4linux2 -input_format mjpeg -s 1920x1080 -t 10 -framerate 30 -i /dev/video2 ~/MakerspaceTracking/videos/calibrate_1080p/1_2.mp4
+ffmpeg -f video4linux2 -input_format mjpeg -s 1920x1080 -t 10 -framerate 30 -i /dev/video4 ~/MakerspaceTracking/videos/calibrate_1080p/1_4.mp4
+ffmpeg -f video4linux2 -input_format mjpeg -s 1920x1080 -t 10 -framerate 30 -i /dev/video0 ~/MakerspaceTracking/videos/calibrate_1080p/2_0.mp4
+ffmpeg -f video4linux2 -input_format mjpeg -s 1920x1080 -t 10 -framerate 30 -i /dev/video5 ~/MakerspaceTracking/videos/calibrate_1080p/2_5.mp4
+
+
